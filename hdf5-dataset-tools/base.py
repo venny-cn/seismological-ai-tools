@@ -10,7 +10,9 @@ from obspy import UTCDateTime
 import time 
 from utils.fetchdata import OBSPYData
 from utils.dbdata import Client 
-import multiprocessing 
+import multiprocessing
+import tqdm
+
 class WriteH5():
     def __init__(self, args):
 

@@ -9,7 +9,8 @@ import scipy.signal as signal
 import time 
 import multiprocessing 
 plt.switch_backend('agg')
-import h5py 
+import h5py
+
 def _csv_file():
     if os.path.exists("ckpt/phasedata.pkl")==True:
         outfile = open("ckpt/phasedata.pkl", "rb")
@@ -580,6 +581,7 @@ class DataTestForShow2():
     def batch_data(self):
         a1, a2, a3, a4 = self.batch_queue.get() 
         return a1, a2, a3, a4
+
 class DataTestForShow3():
     def __init__(self, batch_size=32, n_thread=1, strides=8, n_length=3000):
         self.batch_size = batch_size 
@@ -664,9 +666,9 @@ class DataTestForShow3():
         return a1, a2, a3, a4
 
 if __name__=="__main__":
-    tool = PhaseData() 
+    tool = Data()
     for step in range(20):
-        a1, a2, a3, a4, a5, a6 = tool.next_batch() 
+        a1, a2, a3, a4 = tool.batch_data()
         plt.cla()
         plt.clf()
         plt.plot(a1[0, :, 0]) 
